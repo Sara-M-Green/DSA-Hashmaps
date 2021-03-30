@@ -11,13 +11,13 @@ class HashMap {
         if (this._hashTable[index] === undefined) {
             throw new Error('key error')
         }
-        return this._hashTable[index].value
+        return console.log(this._hashTable[index].value)
     }
 
     set(key, value) {
         const loadRatio = (this.length + this._deleted + 1) / this._capacity
-        if (loadRatio > HashMap.MAX_LOAD_RATIO) {
-            this._resize(this._capacity * HashMap.SIZE_RATIO)
+        if (loadRatio > this.MAX_LOAD_RATIO) {
+            this._resize(this._capacity * this.SIZE_RATIO)
         }
 
         const index = this._findSlot(key)
@@ -82,3 +82,5 @@ class HashMap {
         return hash >>> 0
     }
 }
+
+module.exports = HashMap
